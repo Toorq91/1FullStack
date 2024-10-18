@@ -13,7 +13,7 @@ function App() {
 
   const getData = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/todo'); // Make sure this matches your backend route
+      const response = await axios.get('http://localhost:5238/todo'); // Make sure this matches your backend route
       setTodoItems(response.data); // Store the fetched todos in state
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -23,7 +23,7 @@ function App() {
   const createTodoItem = async () => {
     try {
       const todoItem = { text: inputText };
-      await axios.post('http://localhost:5000/todo', todoItem);
+      await axios.post('http://localhost:5238/todo', todoItem);
       setInputText(''); // Clear the input
       getData(); // Refresh the list after adding a new item
     } catch (error) {
@@ -34,7 +34,7 @@ function App() {
   const registerDone = async (id) => {
     try {
       const todoItem = todoItems.find(ti => ti.id === id);
-      await axios.put('http://localhost:5000/todo', todoItem);
+      await axios.put('http://localhost:5238/todo', todoItem);
       getData(); // Refresh the list after updating an item
     } catch (error) {
       console.error('Error registering done:', error);
@@ -43,7 +43,7 @@ function App() {
 
   const deleteTodoItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/todo${id}`);
+      await axios.delete(`http://localhost:5238/todo/${id}`);
       getData(); // Refresh the list after deleting an item
     } catch (error) {
       console.error('Error deleting todo:', error);
