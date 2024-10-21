@@ -61,7 +61,7 @@ function App() {
               {todoItem.done == null ? (
                 <button onClick={() => registerDone(todoItem.id)}>Register Done</button>
               ) : (
-                <span>Done on {new Date(todoItem.done).toLocaleDateString()}</span>
+                <span> Done on {new Date(todoItem.done).toLocaleDateString()}</span>
               )}
               <button onClick={() => deleteTodoItem(todoItem.id)}>Delete</button>
             </li>
@@ -81,43 +81,3 @@ function App() {
 }
 
 export default App;
-
-
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-// const showALert = () => {
-//   alert('HAH! GOTTEM! :D');
-// };
-
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Welcome to Thor's little Todo app :)
-//         </p>
-//         <button onClick={showALert}>Click Me!</button>
-//         <a
-//           className="App-link"
-//           href="https://www.vg.no/"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           VG
-//         </a>
-//         <a
-//           className="App-link"
-//           href="https://www.youtube.com/"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Youtube
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
