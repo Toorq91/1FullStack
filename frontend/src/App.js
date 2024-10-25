@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import touchLogo from './touch-logo.svg';
+// import beersLogo from './beers.svg';
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
@@ -50,33 +52,58 @@ function App() {
     }
   };
 
+  // Bytte {...Logo} til noe annet hvis man vil bytte svg logo + last ned riktig svg logo til src mappe og import riktig svg på toppen.
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Thor's Todo App</h1>
-        <ul>
-          {todoItems.map(todoItem => (
-            <li key={todoItem.id}>
-              {todoItem.text}
-              {todoItem.done == null ? (
-                <button onClick={() => registerDone(todoItem.id)}>Register Done</button>
-              ) : (
-                <span> Done on {new Date(todoItem.done).toLocaleDateString()}</span>
-              )}
-              <button onClick={() => deleteTodoItem(todoItem.id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
+    <header className="App-header">
+  <img src={touchLogo} className="App-logo" alt="Touch logo" />
+  <h1>Thor's Todo App</h1>
+  <ul>
+    {todoItems.map(todoItem => (
+      <li key={todoItem.id}>
+        {todoItem.text}
+        {todoItem.done == null ? (
+          <button onClick={() => registerDone(todoItem.id)}>Register Done</button>
+        ) : (
+          <span> Done on {new Date(todoItem.done).toLocaleDateString()}</span>
+        )}
+        <button onClick={() => deleteTodoItem(todoItem.id)}>Delete</button>
+      </li>
+    ))}
+  </ul>
+  <input
+    type="text"
+    value={inputText}
+    onChange={e => setInputText(e.target.value)}
+    placeholder="New todo..."
+  />
+  <button onClick={createTodoItem}>Add Todo</button>
+</header>
+    // <div className="App">
+    //   <header className="App-header">
+    //     <h1>Thor's Todo App</h1>
+    //     <ul>
+    //       {todoItems.map(todoItem => (
+    //         <li key={todoItem.id}>
+    //           {todoItem.text}
+    //           {todoItem.done == null ? (
+    //             <button onClick={() => registerDone(todoItem.id)}>Register Done</button>
+    //           ) : (
+    //             <span> Done on {new Date(todoItem.done).toLocaleDateString()}</span>
+    //           )}
+    //           <button onClick={() => deleteTodoItem(todoItem.id)}>Delete</button>
+    //         </li>
+    //       ))}
+    //     </ul>
 
-        <input
-          type="text"
-          value={inputText}
-          onChange={e => setInputText(e.target.value)}
-          placeholder="New todo..."
-        />
-        <button onClick={createTodoItem}>Add Todo</button>
-      </header>
-    </div>
+    //     <input
+    //       type="text"
+    //       value={inputText}
+    //       onChange={e => setInputText(e.target.value)}
+    //       placeholder="New todo..."
+    //     />
+    //     <button onClick={createTodoItem}>Add Todo</button>
+    //   </header>
+    // </div>
   );
 }
 
